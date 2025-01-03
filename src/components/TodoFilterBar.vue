@@ -38,7 +38,7 @@ defineProps({
     required: true,
   },
   selectedUserId: {
-    type: String,
+    type: [String, Number],
     required: true,
   },
   searchQuery: {

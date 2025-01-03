@@ -25,15 +25,13 @@
     </div>
     <p v-else class="text-gray-500">No todos found.</p>
 
-    <CreateTodoPopup v-if="isPopupOpen" @close="closePopup" />
+    <CreateTodoPopup v-if="isPopupOpen" @close="closePopup" @new-todo="addTodo" />
   </div>
 </template>
 
 <script setup>
 import { ref, computed, watchEffect } from 'vue';
 import TodoItem from './TodoItem.vue';
-import CustomSelect from './CustomSelect.vue';
-import CustomInput from './CustomInput.vue';
 import CustomButton from './CustomButton.vue';
 import CreateTodoPopup from './CreateTodoPopup.vue';
 import TodoFilterBar from './TodoFilterBar.vue';
@@ -44,6 +42,8 @@ const props = defineProps({
     required: true,
   },
 });
+
+const localTodos = ref([...props.todos]);
 
 const favorites = ref([]);
 const isPopupOpen = ref(false);
@@ -70,10 +70,14 @@ const selectedUserId = ref('All Users');
 const searchQuery = ref('');
 
 const statusOptions = ['All', 'Completed', 'Uncompleted', 'Favorites'];
-const userIdOptions = ['All Users', ...new Set(props.todos.map((todo) => todo.userId))];
+// const userIdOptions = ['All Users', ...new Set(localTodos.value.map((todo) => todo.userId))];
+
+const userIdOptions = computed(() => {
+  return ['All Users', ...new Set(localTodos.value.map((todo) => todo.userId))];
+});
 
 const filteredTodos = computed(() => {
-  return props.todos
+  return localTodos.value
     .filter((todo) => {
       // Filter by status
       if (selectedStatus.value === 'Completed') return todo.completed;
@@ -98,5 +102,10 @@ const openPopup = () => {
 
 const closePopup = () => {
   isPopupOpen.value = false;
+};
+
+const addTodo = (newTodo) => {
+  localTodos.value.push(newTodo);
+  closePopup();
 };
 </script>
