@@ -15,7 +15,7 @@
           <CustomInput v-model="todo.title" type="text" placeholder="Enter Title" required />
         </div>
         <div class="flex justify-end gap-2">
-          <CustomButton type="button" @click="$emit('close')" label="Cancel" />
+          <CustomButton type="button" @click="$emit('close')" label="Cancel" color="blue" />
           <CustomButton type="submit" label="Submit" :loading="loading" />
         </div>
       </form>

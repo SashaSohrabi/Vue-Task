@@ -2,20 +2,16 @@
   <div>
     <h2 class="text-xl font-bold mb-4">Todos</h2>
 
-    <div class="mb-4 flex gap-4">
-      <CustomSelect
-        :options="statusOptions"
-        v-model="selectedStatus"
-        placeholder="Filter by Status"
+    <div class="mb-4 flex gap-4 justify-between flex-col md:flex-row">
+      <TodoFilterBar
+        :statusOptions="statusOptions"
+        v-model:selectedStatus="selectedStatus"
+        :userIdOptions="userIdOptions"
+        v-model:selectedUserId="selectedUserId"
+        v-model:searchQuery="searchQuery"
       />
-      <CustomSelect
-        :options="userIdOptions"
-        v-model="selectedUserId"
-        placeholder="Filter by User ID"
-      />
-      <CustomInput v-model="searchQuery" placeholder="Search by Title" />
 
-      <CustomButton @click="openPopup" color="blue" label="Create todo" />
+      <CustomButton @click="openPopup" color="blue" label="Create todo" class="max-w-28" />
     </div>
 
     <div v-if="filteredTodos.length" class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
@@ -40,6 +36,7 @@ import CustomSelect from './CustomSelect.vue';
 import CustomInput from './CustomInput.vue';
 import CustomButton from './CustomButton.vue';
 import CreateTodoPopup from './CreateTodoPopup.vue';
+import TodoFilterBar from './TodoFilterBar.vue';
 
 const props = defineProps({
   todos: {
