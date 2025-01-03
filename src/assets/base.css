@@ -1,0 +1,134 @@
+/* Custom global styles */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Root color variables for semantic theming */
+:root {
+  --color-background: #f8f8f8;
+  --color-text: #2c3e50;
+}
+
+/* Universal Box Sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Basic Document Defaults */
+html {
+  line-height: 1.15; /* Improve text readability */
+  text-size-adjust: 100%; /* Prevent font scaling on mobile */
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  color: var(--color-text);
+  background-color: var(--color-background);
+  font-family: Roboto, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition:
+    color 0.5s,
+    background-color 0.5s;
+}
+
+/* Headings Reset */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: normal;
+  margin: 0;
+}
+
+/* Paragraph Reset */
+p {
+  margin: 0;
+}
+
+/* Anchor Links */
+a {
+  color: inherit;
+  text-decoration: none;
+  background-color: transparent; /* Remove default highlight */
+}
+
+/* Lists */
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto; /* Ensure images are responsive */
+  display: block;
+}
+
+/* Forms */
+button,
+input,
+textarea,
+select {
+  font: inherit; /* Ensure consistent font */
+  margin: 0;
+}
+
+button {
+  border: none;
+  padding: 0;
+  background: none; /* Reset button styling */
+  cursor: pointer; /* Show pointer for buttons */
+}
+
+textarea {
+  resize: vertical; /* Allow vertical resizing */
+}
+
+input,
+textarea,
+button,
+select {
+  line-height: inherit;
+}
+
+/* Tables */
+table {
+  border-collapse: collapse; /* Merge borders */
+  border-spacing: 0;
+  width: 100%;
+}
+
+td,
+th {
+  padding: 0;
+  text-align: left;
+}
+
+/* Scrollbar (Optional Modern Styling) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #aaa;
+}
