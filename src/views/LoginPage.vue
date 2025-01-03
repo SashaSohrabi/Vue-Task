@@ -106,6 +106,7 @@ const handleSubmit = async () => {
     );
 
     if (matchingUser) {
+      localStorage.setItem('authToken', 'yourAuthTokenHere');
       toastSuccess(TOAST_MESSAGES.LOGIN_SUCCESSFUL(matchingUser.name));
       router.push({ name: 'UserDetails', params: { userId: matchingUser.id } });
     } else {
