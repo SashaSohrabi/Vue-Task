@@ -33,3 +33,13 @@ npm run build
 ```sh
 npm run lint
 ```
+
+## Recommended Test Credentials for Login
+
+To quickly test the login functionality, you can use the following credentials:
+
+- **Username:** `Samantha`  
+- **Phone:** `1-463-123-4447`
+
+These credentials match a user from the API (`https://jsonplaceholder.typicode.com/users`). You can log in using them to proceed to the user details and todo list page.
+
