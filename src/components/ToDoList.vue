@@ -19,7 +19,7 @@
     </div>
 
     <div v-if="filteredTodos.length" class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-      <ToDoItem
+      <TodoItem
         v-for="todo in filteredTodos"
         :key="todo.id"
         :todo="todo"
@@ -35,7 +35,7 @@
 
 <script setup>
 import { ref, computed, watchEffect } from 'vue';
-import ToDoItem from './ToDoItem.vue';
+import TodoItem from './TodoItem.vue';
 import CustomSelect from './CustomSelect.vue';
 import CustomInput from './CustomInput.vue';
 import CustomButton from './CustomButton.vue';
