@@ -1,3 +1,11 @@
+// URLs for API endpoints
+export const API_URLS = {
+  TODOS: 'https://jsonplaceholder.typicode.com/todos',
+  USERS: 'https://jsonplaceholder.typicode.com/users',
+  USER_DETAILS: (userId) => `https://jsonplaceholder.typicode.com/users/${userId}`,
+};
+
+// Error messages for form validation
 export const ERROR_MESSAGES = {
   USERNAME_REQUIRED: 'Username is required.',
   USERNAME_INVALID: 'Username can only contain letters.',
@@ -5,6 +13,7 @@ export const ERROR_MESSAGES = {
   PHONE_NUMBER_INVALID: 'Phone number can only contain numbers and these symbols: ( ) + - . * #',
 };
 
+// Toast messages for different scenarios
 export const TOAST_MESSAGES = {
   VALIDATION_ERROR: {
     title: 'Validation Error',
@@ -18,8 +27,8 @@ export const TOAST_MESSAGES = {
     title: 'Login Error',
     description: 'Username or phone number does not match.',
   },
-  FETCH_ERROR: {
+  FETCH_ERROR: (resource) => ({
     title: 'Error',
-    description: 'Failed to fetch users. Please try again later.',
-  },
+    description: `Failed to fetch ${resource}. Please try again later.`,
+  }),
 };

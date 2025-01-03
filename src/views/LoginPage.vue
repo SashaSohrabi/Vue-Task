@@ -36,7 +36,7 @@ import { ref } from 'vue';
 import CustomInput from '@/components/CustomInput.vue';
 import CustomButton from '@/components/CustomButton.vue';
 import { useRouter } from 'vue-router';
-import { TOAST_MESSAGES, ERROR_MESSAGES } from '@/utils/constants';
+import { TOAST_MESSAGES, ERROR_MESSAGES, API_URLS } from '@/utils/constants';
 import { useAppToast } from '@/composables/useAppToast';
 
 const router = useRouter();
@@ -96,7 +96,7 @@ const handleSubmit = async () => {
   loading.value = true;
 
   try {
-    const response = await fetch('https://jsonplaceholder.typicode.com/users');
+    const response = await fetch(API_URLS.USERS);
     const fetchedUsers = await response.json();
 
     const matchingUser = fetchedUsers.find(
@@ -113,7 +113,7 @@ const handleSubmit = async () => {
       toastError(TOAST_MESSAGES.LOGIN_ERROR);
     }
   } catch (error) {
-    toastError(TOAST_MESSAGES.FETCH_ERROR);
+    toastError(TOAST_MESSAGES.FETCH_ERROR('users'));
   } finally {
     loading.value = false;
   }
