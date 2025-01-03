@@ -6,6 +6,8 @@
     <!-- Todos Section -->
     <TodoList v-if="todos.length" :todos="todos" />
     <p v-else class="text-gray-500 mt-8">No todos available.</p>
+
+    <LogoutIcon />
   </div>
 </template>
 
@@ -16,6 +18,7 @@ import User from '@/components/User.vue';
 import TodoList from '@/components/TodoList.vue';
 import { API_URLS, TOAST_MESSAGES } from '@/utils/constants';
 import { useAppToast } from '@/composables/useAppToast';
+import LogoutIcon from '@/components/LogoutIcon.vue';
 
 const { toastError } = useAppToast();
 

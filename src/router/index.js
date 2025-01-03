@@ -8,7 +8,7 @@ const routes = [
   {
     path: '/',
     name: 'Login',
-    component: () => import('@/views/LoginPage.vue'), // Lazy-loaded
+    component: () => import('@/views/LoginPage.vue'),
   },
   {
     path: '/user/:userId',
