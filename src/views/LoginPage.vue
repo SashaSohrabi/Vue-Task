@@ -47,7 +47,6 @@ const phoneNumber = ref('');
 const usernameError = ref('');
 const phoneError = ref('');
 
-const users = ref([]);
 const loading = ref(false);
 
 const { toastError, toastSuccess } = useAppToast();

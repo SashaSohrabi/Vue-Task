@@ -31,4 +31,12 @@ export const TOAST_MESSAGES = {
     title: 'Error',
     description: `Failed to fetch ${resource}. Please try again later.`,
   }),
+  TODO_CREATED_SUCCESS: {
+    title: 'Todo Created',
+    description: 'Your todo was created successfully.',
+  },
+  TODO_CREATION_ERROR: {
+    title: 'Todo Creation Failed',
+    description: 'Unable to create the todo. Please try again later.',
+  },
 };

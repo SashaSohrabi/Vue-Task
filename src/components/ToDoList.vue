@@ -14,6 +14,8 @@
         placeholder="Filter by User ID"
       />
       <CustomInput v-model="searchQuery" placeholder="Search by Title" />
+
+      <CustomButton @click="openPopup" color="blue" label="Create todo" />
     </div>
 
     <div v-if="filteredTodos.length" class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
@@ -26,6 +28,8 @@
       />
     </div>
     <p v-else class="text-gray-500">No todos found.</p>
+
+    <CreateTodoPopup v-if="isPopupOpen" @close="closePopup" />
   </div>
 </template>
 
@@ -34,6 +38,8 @@ import { ref, computed, watchEffect } from 'vue';
 import ToDoItem from './ToDoItem.vue';
 import CustomSelect from './CustomSelect.vue';
 import CustomInput from './CustomInput.vue';
+import CustomButton from './CustomButton.vue';
+import CreateTodoPopup from './CreateTodoPopup.vue';
 
 const props = defineProps({
   todos: {
@@ -43,6 +49,7 @@ const props = defineProps({
 });
 
 const favorites = ref([]);
+const isPopupOpen = ref(false);
 
 watchEffect(() => {
   favorites.value = JSON.parse(localStorage.getItem('favorites') || '[]');
@@ -87,4 +94,12 @@ const filteredTodos = computed(() => {
       return todo.title.toLowerCase().includes(searchQuery.value.toLowerCase());
     });
 });
+
+const openPopup = () => {
+  isPopupOpen.value = true;
+};
+
+const closePopup = () => {
+  isPopupOpen.value = false;
+};
 </script>
