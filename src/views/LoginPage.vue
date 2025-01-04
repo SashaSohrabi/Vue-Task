@@ -113,6 +113,7 @@ const handleSubmit = async () => {
     }
   } catch (error) {
     toastError(TOAST_MESSAGES.FETCH_ERROR('users'));
+    console.error(error);
   } finally {
     loading.value = false;
   }

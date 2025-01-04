@@ -56,6 +56,7 @@ const handleTodoSubmit = async () => {
     emit('close');
   } catch (error) {
     toastError(TOAST_MESSAGES.TODO_CREATION_ERROR);
+    console.error(error);
   } finally {
     loading.value = false;
   }

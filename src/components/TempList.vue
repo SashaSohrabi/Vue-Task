@@ -15,7 +15,7 @@
     </div>
 
     <div v-if="filteredTodos.length" class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-      <TodoItem
+      <TempItem
         v-for="todo in filteredTodos"
         :key="todo.id"
         :todo="todo"
@@ -31,7 +31,7 @@
 
 <script setup>
 import { ref, computed, watchEffect } from 'vue';
-import TodoItem from './TodoItem.vue';
+import TempItem from './TempItem.vue';
 import CustomButton from './CustomButton.vue';
 import CreateTodoPopup from './CreateTodoPopup.vue';
 import TodoFilterBar from './TodoFilterBar.vue';
@@ -70,7 +70,6 @@ const selectedUserId = ref('All Users');
 const searchQuery = ref('');
 
 const statusOptions = ['All', 'Completed', 'Uncompleted', 'Favorites'];
-// const userIdOptions = ['All Users', ...new Set(localTodos.value.map((todo) => todo.userId))];
 
 const userIdOptions = computed(() => {
   return ['All Users', ...new Set(localTodos.value.map((todo) => todo.userId))];
