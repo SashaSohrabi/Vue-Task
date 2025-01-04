@@ -1,10 +1,10 @@
 <template>
   <div class="min-h-screen bg-gray-100 p-6">
-    <User v-if="user" :user="user" />
+    <UserDetails v-if="user" :user="user" />
     <div v-else class="text-center text-gray-500">Loading user details...</div>
 
     <!-- Todos Section -->
-    <TempList v-if="todos.length" :todos="todos" />
+    <TodoList v-if="todos.length" :todos="todos" />
     <p v-else class="text-gray-500 mt-8">No todos available.</p>
 
     <LogoutIcon />
@@ -14,8 +14,8 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
-import User from '@/components/User.vue';
-import TempList from '@/components/TempList.vue';
+import UserDetails from '@/components/UserDetails.vue';
+import TodoList from '@/components/TodoList.vue';
 import { API_URLS, TOAST_MESSAGES } from '@/utils/constants';
 import { useAppToast } from '@/composables/useAppToast';
 import LogoutIcon from '@/components/LogoutIcon.vue';

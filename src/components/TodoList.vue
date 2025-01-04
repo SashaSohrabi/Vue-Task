@@ -15,7 +15,7 @@
     </div>
 
     <div v-if="filteredTodos.length" class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-      <TempItem
+      <TodoItem
         v-for="todo in filteredTodos"
         :key="todo.id"
         :todo="todo"
@@ -31,7 +31,7 @@
 
 <script setup>
 import { ref, computed, watchEffect } from 'vue';
-import TempItem from './TempItem.vue';
+import TodoItem from './TodoItem.vue';
 import CustomButton from './CustomButton.vue';
 import CreateTodoPopup from './CreateTodoPopup.vue';
 import TodoFilterBar from './TodoFilterBar.vue';
