@@ -107,7 +107,14 @@ const closePopup = () => {
 };
 
 const addTodo = (newTodo) => {
-  localTodos.value.push(newTodo);
+  const index = localTodos.value.findIndex((todo) => todo.userId === newTodo.userId);
+
+  if (index !== -1) {
+    localTodos.value[index] = newTodo;
+  } else {
+    localTodos.value.push(newTodo);
+  }
+
   closePopup();
 };
 </script>
