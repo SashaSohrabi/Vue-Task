@@ -16,6 +16,11 @@ const routes = [
     component: () => import('@/views/UserDetailsPage.vue'),
     meta: { requiresAuth: true },
   },
+  {
+    path: '/:pathMatch(.*)*', // Catch-all route for 404
+    name: 'NotFound',
+    component: () => import('@/views/NotFoundPage.vue'),
+  },
 ];
 
 const router = createRouter({
@@ -26,6 +31,8 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   if (to.meta.requiresAuth && !isAuthenticated()) {
     next({ name: 'Login' });
+  } else if (!routes.some((route) => route.name === to.name)) {
+    next({ name: 'NotFound' });
   } else {
     next();
   }
