@@ -72,7 +72,10 @@ const searchQuery = ref('');
 const statusOptions = ['All', 'Completed', 'Uncompleted', 'Favorites'];
 
 const userIdOptions = computed(() => {
-  return ['All Users', ...new Set(localTodos.value.map((todo) => todo.userId))];
+  return [
+    'All Users',
+    ...new Set(localTodos.value.map((todo) => todo.userId).sort((a, b) => a - b)),
+  ];
 });
 
 const filteredTodos = computed(() => {
