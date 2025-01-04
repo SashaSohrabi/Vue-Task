@@ -49,7 +49,12 @@ const favorites = ref([]);
 const isPopupOpen = ref(false);
 
 watchEffect(() => {
-  favorites.value = JSON.parse(localStorage.getItem('favorites') || '[]');
+  const favoritesFromStorage = JSON.parse(localStorage.getItem('favorites') || '[]');
+  const validTodoIds = new Set(localTodos.value.map((todo) => todo.id));
+
+  favorites.value = favoritesFromStorage.filter((id) => validTodoIds.has(id));
+
+  localStorage.setItem('favorites', JSON.stringify(favorites.value));
 });
 
 const toggleFavorite = (id) => {
@@ -106,7 +111,16 @@ const closePopup = () => {
   isPopupOpen.value = false;
 };
 
+const generateUniqueId = () => {
+  const maxId = Math.max(...localTodos.value.map((todo) => todo.id), 0);
+  return maxId + 1;
+};
+
 const addTodo = (newTodo) => {
+  if (localTodos.value.some((todo) => todo.id === newTodo.id)) {
+    newTodo.id = generateUniqueId();
+  }
+
   const index = localTodos.value.findIndex((todo) => todo.userId === newTodo.userId);
 
   if (index !== -1) {
